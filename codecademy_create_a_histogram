@@ -1,0 +1,20 @@
+# This program counts the frequencies of words appearing in a text supplied by the user. 
+
+puts "Please enter text"
+text = gets.chomp
+
+words = text.split
+
+frequencies = Hash.new(0)
+words.each do |x|
+    frequencies[x] += 1
+end
+
+frequencies = frequencies.sort_by do |word,count|
+    count
+end
+frequencies.reverse!
+
+frequencies.each do |color,count|
+   puts color + " " + count.to_s 
+end
