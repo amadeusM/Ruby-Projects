@@ -1,0 +1,41 @@
+# This program uses Ruby hashes and symbols to create a program that displays, adds, updates, and removes movie ratings.
+
+movies = Hash.new
+movies = {
+ "Frozen" => 4
+}
+
+puts "What would you like to do?"
+choice = gets.chomp
+
+case choice
+when "add"
+    puts "Please enter movie title."
+    title = gets.chomp
+    if movies[title.intern].nil?
+        puts "Please enter a rating for #{title}."
+        rating = gets.chomp
+        movies[title.intern] = rating.to_i
+    else
+        puts "Movie already exists in folder!"
+    end    
+when "update"
+    puts "Please enter a movie title"
+    title = gets.chomp
+    if movies[title].nil?
+        puts "Error! #{title} cannot be found in folder"
+    else
+        puts "Please enter new rating for #{title}."
+        rating = gets.chomp
+        movies[title] = rating.to_i
+    end
+when "display"
+    movies.each {|movie,rating| puts "#{movie}: #{rating}"}
+when "delete"
+    puts "Please enter the title of the movie you'd like to delete."
+    title = gets.chomp
+    movies.delete(title)
+    puts "#{title} has been deleted!"
+else
+    puts "Error!"
+end
