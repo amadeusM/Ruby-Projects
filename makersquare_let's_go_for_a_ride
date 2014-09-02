@@ -1,0 +1,22 @@
+#This program uses a Ruby class to simulate a car 
+
+class Car
+    def initialize(fuel,distance)
+        @fuel = fuel
+        @distance = distance
+    end
+    def get_info
+        "I'm a car! I've driven #{@distance} miles and have #{@fuel} gallons of gas left."
+    end
+    def drive(miles)
+        @distance += miles
+        @fuel -= miles/20
+        if @fuel < 0
+            "You are out of gas and need to fuel up!"
+        end
+    end
+    def fuel_up
+        fuelneeded = 10 - @fuel
+        "You need #{fuelneeded} gallon(s) of gas to fill up your tank!" 
+    end
+end
