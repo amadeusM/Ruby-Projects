@@ -1,0 +1,48 @@
+class Cookbook
+    attr_accessor :title
+    attr_reader :recipes
+    def initialize(title)
+        @title = title
+        @recipes = []
+    end
+    def add_recipe(recipe)
+        @recipes << recipe
+        puts "Added a recipe to the collection: #{recipe.title}"
+    end
+    def recipe_titles
+        @recipes.each {|recipe| puts recipe.title}
+    end
+    def recipe_ingredients
+        @recipes.each {|recipe| puts "These are the ingredients for #{recipe.title}: #{recipe.ingredients}"}
+    end
+    def print_cookbook
+        @recipes.each {|recipe|
+            recipe.print_recipe
+        }
+    end
+end
+
+class Recipe
+    attr_reader :title
+    attr_reader :ingredients
+    attr_reader :steps
+    def initialize(title,ingredients,steps)
+        @title = title
+        @ingredients = ingredients
+        @steps = steps
+    end
+    def print_recipe
+        puts "Recipe Title: #{title}"
+        puts "Ingredients: " + ingredients.join(", ")
+        puts numberedSteps
+    end
+    def numberedSteps
+        puts "Steps:\n"
+        i = 1
+        while i < steps.count + 1
+            puts "#{i}.#{steps[i-1]}"
+            i += 1
+        end
+    end
+end
+    
