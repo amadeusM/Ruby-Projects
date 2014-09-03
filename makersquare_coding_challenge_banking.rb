@@ -51,8 +51,12 @@ class Bank
         @customers.each{|cusArray| 
             if cusArray[0] == customer
                 cusArray[1] = cusArray[1] - transAmount
-                transferTo.@customers[1] = transferTo.@customers[1] + transAmount
-                puts "#{customer.name} transferred $#{transAmount} from the #{@bankName} account to the #{transferTo} account. The #{@bankName} account has $#{cusArray[1]} and the #{transferTo} account has $#{transferTo.@customers[1]}"
+                transferTo.customers.each {|cusArrayTransferTo|
+                    if cusArrayTransferTo[0] == customer
+                        transferTo.customers[1] = transferTo.customers[1] + transAmount
+                    end
+                }
+                puts "#{customer.name} transferred $#{transAmount} from the #{@bankName} account to the #{transferTo} account. The #{@bankName} account has $#{cusArray[1]} and the #{transferTo} account has $#{transferTo.customers[1]}"
             end
         }
     end
