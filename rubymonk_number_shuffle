@@ -1,0 +1,15 @@
+#Given a 3 or 4 digit number with distinct digits, this program returns a sorted array of all the unique numbers that can be formed with those digits. 
+
+def number_shuffle(number)
+  ret_array = []
+  digit_array = number.to_s.split('')
+  loop do
+    new_num = digit_array.shuffle.join('')
+    ret_array << new_num
+    ret_array.uniq!
+    break if ret_array.length == 6 && digit_array.length == 3
+    break if ret_array.length == 24 && digit_array.length == 4
+  end
+  final_array = ret_array.map {|e| e.to_i}.sort
+  final_array
+end
