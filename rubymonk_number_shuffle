@@ -1,5 +1,6 @@
 #Given a 3 or 4 digit number with distinct digits, this program returns a sorted array of all the unique numbers that can be formed with those digits. 
 
+#Here's my solution:
 def number_shuffle(number)
   ret_array = []
   digit_array = number.to_s.split('')
@@ -12,4 +13,14 @@ def number_shuffle(number)
   end
   final_array = ret_array.map {|e| e.to_i}.sort
   final_array
+end
+
+#Here's Ruby Monk's solution:
+
+def number_shuffle(number)
+  no_of_combinations = number.to_s.size == 3 ? 6 : 24
+  digits = number.to_s.split(//)
+  combinations = []
+  combinations << digits.shuffle.join.to_i while combinations.uniq.size!=no_of_combinations
+  combinations.uniq.sort
 end
