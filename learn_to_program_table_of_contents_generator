@@ -1,0 +1,10 @@
+# This program generates a table of contents given an array of chapter titles and corresponding starting page numbers
+
+line_width = 100
+array = [["Getting Started",1],["Numbers",9],["Letters",13]]
+i = 0
+puts ("Table of Contents".center(line_width/2))
+array.each do |content|
+    i = i + 1
+	puts("Chapter #{i}: #{content[0]}".ljust(line_width/2) + "page #{content[1]}")
+end
