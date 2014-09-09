@@ -1,0 +1,25 @@
+
+while true 
+	shout = gets.chomp
+	if shout != shout.upcase
+		puts "HUH?! SPEAK UP, SONNY!" 
+	elsif shout == "BYE"
+		puts "HUH?! SPEAK UP, SONNY!"
+		shout2 = gets.chomp
+		if shout2 == "BYE"
+			puts "HUH?! SPEAK UP, SONNY!"
+				shout3 = gets.chomp
+				if shout3 == "BYE"
+					break
+				else 
+					true
+				end
+		else
+			true
+		end
+	elsif shout == shout.upcase
+		puts "NO, NOT SINCE #{1930 + rand(21)}" 
+		break
+	end
+
+end
