@@ -1,0 +1,16 @@
+#This program generates a list of leap years given a range of years. 
+
+puts "Give me a starting year."
+starting_year = gets.chomp
+puts "Give me an ending year."
+ending_year = gets.chomp
+
+i = starting_year.to_i
+while i <= ending_year.to_i 
+    if i % 400 == 0
+		puts i
+	elsif (i % 4 == 0) && (i % 100 != 0)
+		puts i
+	end
+	i = i + 1
+end
