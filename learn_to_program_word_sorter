@@ -1,0 +1,14 @@
+# This program sorts words from a user. 
+
+puts "Give me a few words and I will sort them!"
+input = gets.chomp
+words = []
+
+while input != ''
+    words << input
+    input = gets.chomp
+	break if input.empty?
+end
+
+puts "Here are your sorted words!"
+puts words.sort
