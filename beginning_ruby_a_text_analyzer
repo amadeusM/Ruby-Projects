@@ -1,0 +1,48 @@
+# This program analyzes text and produces various statistics, including character count, line count, word count, sentence count, paragraph count, average number of words per sentence, and average number of sentences per paragraph
+# analyzer.rb -- Text Analyzer
+
+text = ''
+line_count = 0
+stopwords = %w{the a by on for of are with just but and to the my I has some in}
+File.open("text.txt").each do |line| 
+	line_count += 1
+	text << line
+end
+
+# Count the characters
+total_characters = text.length
+total_characters_nospaces = text.gsub(/\s+/, '').length
+
+# Count the words, sentences, and paragraphs
+word_count = text.split.length
+sentence_count = text.split(/\.|\?|!/).length
+paragraph_count = text.split(/\n\n/).length
+average_words_per_sentence = (word_count.to_f/sentence_count.to_f)
+average_sentences_per_paragraph = (sentence_count.to_f/paragraph_count.to_f)
+
+# Make a list of words in the text that aren't stop words, count them, and work out the percentage of non-stop words
+words = text.scan(/\w+/)
+keywords = words.select{|word| !stopwords.include?(word)}
+percentage_nonstop_words = ((keywords.length.to_f/words.length.to_f)*100).to_i
+
+# Summarize the text by cherry picking choice sentences
+sentences = text.gsub(/\s+/).strip.split(/\.|\?|!/)
+sentences_sorted = sentences.sort_by{|sentence| sentence.length}
+one_third = sentences_sorted.length / 3
+ideal_sentences = sentences_sorted.slice(one_third, one_third + 1)
+ideal_sentences = ideal_sentences.select {|sentence| sentence =~ /is|are/}
+
+# Give the analysis back to the user
+puts "#{line_count} lines"
+puts "#{total_characters} characters"
+puts "#{total_characters_nospaces} characters excluding spaces"
+puts "#{word_count} words"
+puts "#{sentence_count} sentences"
+puts "#{paragraph_count} paragraphs"
+puts "#{average_sentences_per_paragraph} sentences per paragraph"
+puts "#{average_words_per_sentence} words per sentence"
+puts "#{percentage_nonstop_words}% of words are useful"
+puts ideal_sentences.join(". ")
+
+"--End of Analysis"
+
