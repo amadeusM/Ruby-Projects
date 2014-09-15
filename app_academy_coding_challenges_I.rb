@@ -9,3 +9,25 @@ You may wish to use the modulo operation: 5 % 2 returns the remainder when divid
 
 Q4: Using your is_prime? method, write a new method, primes that takes a (non-negative, integer) number max and returns an array of all prime numbers less than max.
 =end
+
+# Q1 Solution
+def pow(base,exponent)
+  numbers = []
+  exponent.times { numbers << base}
+  numbers.inject(1){|result,num| result*num}
+end  
+
+# Q2 Solution
+def sum(array)
+  array.inject(0){|sum,num| sum + num}
+end
+
+# Q3 Solution
+def is_prime?(num)
+    if num == 2 || num == 3 || num == 5 || num == 7
+        true
+    else 
+        num % 2 == 0 || num % 3 == 0 || num % 5 == 0 || num % 7 == 0 ? false:true
+    end
+end
+  
