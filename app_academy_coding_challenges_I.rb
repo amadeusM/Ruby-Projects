@@ -30,4 +30,15 @@ def is_prime?(num)
         num % 2 == 0 || num % 3 == 0 || num % 5 == 0 || num % 7 == 0 ? false:true
     end
 end
+
+# Q4 Solution
+def primes(max)
+  primes = []
+  i = 2
+  while i <= max 
+    primes << i if is_prime?(i)
+    i += 1
+  end
+  primes
+end
   
