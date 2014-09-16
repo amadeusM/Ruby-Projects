@@ -19,9 +19,8 @@ def sum_checker(array)
     if array.length < 2
         false
     else
-# Iterate over the array to access each element
+# Iterate over the array to check if the array has a -num (num and -num add up to zero)
         array.each do |num|
-# Iterate over the array again, this time checking if the sum of i with a subsequent number is zero
             return true if array.include?(-num)
         end
     end
