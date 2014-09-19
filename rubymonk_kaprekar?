@@ -1,0 +1,19 @@
+=begin
+9 is a Kaprekar number since
+9 ^ 2 = 81 and 8 + 1 = 9
+
+297 is also Kaprekar number since
+297 ^ 2 = 88209 and 88 + 209 = 297.
+
+In short, for a Kaprekar number k with n-digits, if you square it and add the right n digits to the left n or n-1 digits, the resultant sum is k. 
+=end
+
+def kaprekar?(k)
+  sqr = k**2
+  n = k.to_s.length
+  digits = sqr.to_s.split("")
+  length = digits.length
+  left_digits = digits[0..(length-n-1)].join("")
+  right_digits = digits[(length-n)..(length-1)].join("")
+  right_digits.to_i + left_digits.to_i == k 
+end
